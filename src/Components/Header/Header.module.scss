@@ -1,0 +1,71 @@
+@import "../../App.scss";
+
+header {
+  background: $header-color;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+
+  &__decoration {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    left: 0;
+    width: 261px;
+    height: 60px;
+    background: $main-color;
+  }
+
+  &__decoration::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: -47px;
+    border-right: 47px solid transparent;
+    border-top: 60px solid $main-color;
+  }
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
+
+  &__item {
+
+    .nav__link {
+      @include transition();
+      padding: 20px 7px;
+      color: white;
+      font-size: 15px;
+      font-family: $title-font, sans-serif;
+      font-weight: 600;
+    }
+
+    .nav__active, .nav__link:hover {
+      color: $main-color;
+    }
+  }
+}
+
+.user_profile {
+  @include transition();
+  color: white;
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: 2px solid #828282;
+  border-radius: 50%;
+  &:hover{
+    border-color: #b6b6b6;
+    color: white;
+  }
+}
