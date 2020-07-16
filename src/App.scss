@@ -1,17 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 $title-font: 'Source Sans Pro';
+$common-font: 'Raleway';
 $header-color: #281f55;
 $main-color: #f8104d;
+$bg-color: #1a143b;
+$shadow-color: #828282;
 
 @mixin transition() {
   transition: 0.4s ease;
 }
-
-.container{
+@mixin sizes($width, $height) {
+  width: $width;
+  height: $height;
+}
+body{
+  overflow: hidden;
+}
+button{
+  outline: none !important;
+}
+.container {
   max-width: 1300px;
   margin: 0 auto;
 }
 
+.main-bg {
+  background: $bg-color;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+// for input
 .has-search .form-control {
   padding-left: 2.375rem;
 }

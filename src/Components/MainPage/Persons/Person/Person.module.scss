@@ -1,0 +1,16 @@
+@import "../../../../App.scss";
+
+.person{
+  flex: 1;
+  font-family: $common-font;
+  font-weight: 500;
+  margin: 0 15px;
+  &__imgWrapper{
+    .person__img{
+      @include sizes(150px, 150px);
+      border-radius: 50%;
+      object-fit: cover
+    }
+  }
+}
+

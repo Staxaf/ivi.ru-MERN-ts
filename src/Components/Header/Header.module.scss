@@ -2,8 +2,10 @@
 
 header {
   background: $header-color;
-  position: relative;
+  position: fixed;
+  width: 100vw;
 }
+
 
 .header {
   display: flex;
@@ -62,10 +64,10 @@ header {
   color: white;
   padding: 5px 10px;
   margin: 0 10px;
-  border: 2px solid #828282;
+  border: 2px solid $shadow-color;
   border-radius: 50%;
   &:hover{
-    border-color: #b6b6b6;
+    border-color: white;
     color: white;
   }
 }

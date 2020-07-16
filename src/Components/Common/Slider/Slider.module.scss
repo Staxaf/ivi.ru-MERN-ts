@@ -1,0 +1,38 @@
+@import "../../../App.scss";
+
+.slider{
+  @include transition();
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  &__content{
+    display: flex;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  &__title{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__leftBtn, &__rightBtn{
+    @include transition();
+    background: transparent;
+    color: $shadow-color;
+    border: none;
+    font-size: 30px;
+    z-index: 1;
+    outline: none;
+  }
+  &__leftBtn{
+    left: -30px;
+  }
+  &__rightBtn{
+    right: -30px;
+  }
+  &__leftBtn:hover, &__rightBtn:hover{
+    color: white;
+  }
+  &__link{
+
+  }
+}

@@ -3,7 +3,7 @@ const Person = require('../models/Person.model')
 
 // Get all persons(actors, producers, directors)
 router.route('/').get((req, res) => {
-    Person.find()
+    Person.find().limit(30)
         .then(persons => res.json({persons}))
         .catch(err => res.status(400).json('Error: ' + err))
 })
