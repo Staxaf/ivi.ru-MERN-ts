@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SeriesPage = () => {
-    return <div>SeriesPage</div>
+    return <div className={"text-white"}>SeriesPage</div>
 }
 
 export default SeriesPage

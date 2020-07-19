@@ -14,10 +14,10 @@ const Header = () => {
                         <NavLink exact activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/'}>Main</NavLink>
                     </li>
                     <li className={`nav-item ${css.nav__item}`}>
-                        <NavLink  activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/movies'}>Movies</NavLink>
+                        <NavLink  activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/films'}>Movies</NavLink>
                     </li>
                     <li className={`nav-item ${css.nav__item}`}>
-                        <NavLink  activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/series'}>Serials</NavLink>
+                        <NavLink  activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/serials'}>Serials</NavLink>
                     </li>
                     <li className={`nav-item ${css.nav__item}`}>
                         <NavLink  activeClassName={css.nav__active} className={`nav-link ${css.nav__link}`} to={'/cartoons'}>Cartoons</NavLink>

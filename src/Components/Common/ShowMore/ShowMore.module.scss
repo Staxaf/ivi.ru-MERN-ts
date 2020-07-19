@@ -1,0 +1,17 @@
+@import "../../../App.scss";
+
+.showMore__link {
+  margin: 0 15px;
+  @include transition();
+  width: 150px;
+  height: 100%;
+  background: $header-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.7;
+  }
+}

@@ -1,9 +1,11 @@
 import {applyMiddleware, combineReducers, createStore} from "redux"
 import {mainReducer} from "./main-reducer";
 import thunk from "redux-thunk";
+import {multimediaReducer} from "./multimedia-reducer";
 
 const rootReducer = combineReducers({
-    mainReducer
+    mainReducer,
+    multimediaReducer
 })
 
 type RootReducerType = typeof rootReducer

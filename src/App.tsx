@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css"
 import {Route} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -10,32 +10,27 @@ import SeriesPage from "./Components/SeriesPage/SeriesPage";
 import CartoonsPage from "./Components/CartoonsPage/CartoonsPage";
 import {getPersons} from "./redux/main-reducer";
 import {AppStateType} from "./redux/redux-store";
+import FilmPage from "./Components/FilmPage/FilmPage";
 
-type PropsType = {
-    getPersons: () => void
-}
+type PropsType = {}
 
-const App: React.FC<PropsType> = ({getPersons}) => {
-    useEffect(() => {
-        getPersons()
-    }, [])
+const App: React.FC<PropsType> = () => {
     return (
         <div>
             <Header/>
             <div className={'main-bg'}>
                 <div className='container'>
                     <Route exact path={'/'} render={() => <MainPage/>}/>
-                    <Route path={'/movies'} render={() => <MoviesPage/>}/>
-                    <Route path={'/series'} render={() => <SeriesPage/>}/>
-                    <Route path={'/cartoons'} render={() => <CartoonsPage/>}/>
+                    <Route exact path={'/films'} render={() => <MoviesPage/>}/>
+                    <Route exact path={'/serials'} render={() => <SeriesPage/>}/>
+                    <Route exact path={'/cartoons'} render={() => <CartoonsPage/>}/>
+                    <Route path={'/films/:id'} render={() => <FilmPage />} />
                 </div>
             </div>
         </div>
     );
 }
 
-type MapDispatchPropsType = {
-    getPersons: () => void
-}
+type MapDispatchPropsType = {}
 
-export default connect<null, MapDispatchPropsType, null, AppStateType>(null, {getPersons})(App);
+export default connect<{}, MapDispatchPropsType, {}, AppStateType>(null, {getPersons})(App);

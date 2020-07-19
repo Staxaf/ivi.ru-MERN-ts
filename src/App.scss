@@ -4,18 +4,22 @@ $title-font: 'Source Sans Pro';
 $common-font: 'Raleway';
 $header-color: #281f55;
 $main-color: #f8104d;
-$bg-color: #1a143b;
-$shadow-color: #828282;
+$bg-color: #1d1642;
+$shadow-color: #989898;
+$marker-color: #a859f0;
+$under-color: #6152a8;
+$link-color: #968acf;
 
 @mixin transition() {
-  transition: 0.4s ease;
+  transition: 0.3s ease;
 }
 @mixin sizes($width, $height) {
   width: $width;
   height: $height;
 }
 body{
-  overflow: hidden;
+  overflow-x: hidden;
+  color: white;
 }
 button{
   outline: none !important;

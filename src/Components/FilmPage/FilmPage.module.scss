@@ -1,0 +1,30 @@
+@import "../../App.scss";
+
+.filmPage{
+  &__container{
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+  }
+  &__imgWrapper {
+    width: 300px;
+    img{
+      width: 100%;
+    }
+  }
+  &__title{
+    font-weight: 700;
+  }
+  &__underTitle{
+    color: $under-color;
+    font-weight: 600;
+    margin: 0;
+  }
+  &__details{
+    font-weight: 600;
+    color: $link-color;
+  }
+  &__icon{
+    color: $main-color;
+  }
+}

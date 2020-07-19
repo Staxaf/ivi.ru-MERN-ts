@@ -1,0 +1,60 @@
+@import "../../../App.scss";
+
+.filmCard {
+  font-family: $common-font;
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+
+    .filmCard__details {
+      opacity: 1;
+    }
+  }
+
+  &__imgWrapper {
+    position: relative;
+    margin-bottom: 10px;
+    img {
+      @include sizes(150px, 225px);
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    @include transition();
+    position: absolute;
+    top: 0;
+    //background: $shadow-color;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 10px;
+    font-weight: 500;
+    font-size: 14px;
+    opacity: 0;
+  }
+
+  &__line {
+    background: $main-color;
+    height: 100%;
+    border-radius: 10px;
+  }
+  &__rating{
+
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 0 3px;
+  }
+}
