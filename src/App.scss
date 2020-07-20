@@ -5,34 +5,47 @@ $common-font: 'Raleway';
 $header-color: #281f55;
 $main-color: #f8104d;
 $bg-color: #1d1642;
+$bg-slider-color: #110d2b;
 $shadow-color: #989898;
 $marker-color: #a859f0;
 $under-color: #6152a8;
 $link-color: #968acf;
+$bg-person-color: #f6f5ff;
+$text-color: #25213f;
+$header-height: 60px;
 
 @mixin transition() {
   transition: 0.3s ease;
 }
+
 @mixin sizes($width, $height) {
   width: $width;
   height: $height;
 }
-body{
+
+body {
   overflow-x: hidden;
   color: white;
 }
-button{
+
+button {
   outline: none !important;
 }
+
 .container {
   max-width: 1300px;
+  margin: 0 auto;
+}
+
+.small-container {
+  width: 900px;
   margin: 0 auto;
 }
 
 .main-bg {
   background: $bg-color;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: $header-height;
 }
 
 // for input
@@ -50,4 +63,10 @@ button{
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+.line {
+  background: $main-color;
+  height: 100%;
+  border-radius: 10px;
 }

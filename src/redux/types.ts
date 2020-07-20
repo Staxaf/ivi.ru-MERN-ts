@@ -10,6 +10,11 @@ export const SET_SERIALS = 'SET_SERIALS'
 
 //multimedia-reducer action types
 export const SET_MULTIMEDIA = 'SET_MULTIMEDIA'
+export const SET_SIMILAR_FILMS = 'SET_SIMILAR_FILMS'
+
+//person-reducer action types
+export const SET_PERSON = 'SET_PERSON'
+export const SET_PERSON_FILMS = 'SET_PERSON_FILMS'
 
 // main-reducer types
 export type PersonsType = {
@@ -18,10 +23,11 @@ export type PersonsType = {
     gender: string
     photoUrl: string
     profession: string
+    description: string
     _id: string
 }
 
-export type FilmType = {
+export interface FilmType {
     genres: Array<GenreType>
     actors: Array<PersonsType>
     directors: Array<PersonsType>

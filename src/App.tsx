@@ -11,6 +11,7 @@ import CartoonsPage from "./Components/CartoonsPage/CartoonsPage";
 import {getPersons} from "./redux/main-reducer";
 import {AppStateType} from "./redux/redux-store";
 import FilmPage from "./Components/FilmPage/FilmPage";
+import PersonPage from "./Components/PersonPage/PersonPage";
 
 type PropsType = {}
 
@@ -24,8 +25,9 @@ const App: React.FC<PropsType> = () => {
                     <Route exact path={'/films'} render={() => <MoviesPage/>}/>
                     <Route exact path={'/serials'} render={() => <SeriesPage/>}/>
                     <Route exact path={'/cartoons'} render={() => <CartoonsPage/>}/>
-                    <Route path={'/films/:id'} render={() => <FilmPage />} />
                 </div>
+                <Route path={'/watch/:type/:id'} render={() => <FilmPage />} />
+                <Route path={'/persons/:id'} render={() => <PersonPage/>} />
             </div>
         </div>
     );

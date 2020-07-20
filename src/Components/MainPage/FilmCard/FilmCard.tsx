@@ -3,9 +3,13 @@ import {FilmType} from "../../../redux/types";
 import css from './FilmCard.module.scss'
 import {NavLink} from "react-router-dom";
 
-const FilmCard: React.FC<FilmType> = ({title, releaseYear, producerCountry, poster, ratingIMDB,
-                                          ageRating, type, _id, genres,duration}) => {
-    return <NavLink to={`/${type.toLowerCase()}s/${_id}`} className={css.filmCard}>
+interface PropsType extends FilmType  {
+    textColor?: string
+}
+
+const FilmCard: React.FC<PropsType> = ({title, releaseYear, producerCountry, poster, ratingIMDB,
+                                          ageRating, type, _id, genres,duration,textColor}) => {
+    return <NavLink to={`/watch/${type.toLowerCase()}s/${_id}`} className={css.filmCard}>
         <div className={css.filmCard__imgWrapper}>
             <img src={poster} alt=""/>
             <div className={css.filmCard__rating}>{ageRating}+</div>
@@ -17,7 +21,7 @@ const FilmCard: React.FC<FilmType> = ({title, releaseYear, producerCountry, post
                     'height': '5px',
                     'background': 'grey',
                     'borderRadius': '10px'
-                }} ><div className={css.filmCard__line} style={{
+                }} ><div className={"line"} style={{
                     'width': `${ratingIMDB * 10}%`,
 
                 }} /></div>
@@ -25,7 +29,7 @@ const FilmCard: React.FC<FilmType> = ({title, releaseYear, producerCountry, post
 
             </div>
         </div>
-        <div className={css.filmCard__description}>
+        <div className={css.filmCard__description} style={{'color': textColor ? textColor : 'white'}}>
             {title.slice(0, 16)}{title.length > 16 && '...'}
         </div>
     </NavLink>

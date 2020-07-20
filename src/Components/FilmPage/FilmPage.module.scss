@@ -1,10 +1,10 @@
 @import "../../App.scss";
 
 .filmPage{
-  &__container{
-    width: 1000px;
-    margin: 0 auto;
-    display: flex;
+  margin-top: 20px;
+  &__main{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
   }
   &__imgWrapper {
     width: 300px;
@@ -23,8 +23,72 @@
   &__details{
     font-weight: 600;
     color: $link-color;
+    .filmPage__personLink{
+      @include transition();
+      color: $link-color;
+      &:hover{
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
   &__icon{
     color: $main-color;
+  }
+  &__description{
+    color: $link-color;
+  }
+  &__video{
+  width: 100%;
+  height: 520px;
+  margin: 30px 0;
+  outline: none;
+  border: 0
+  }
+  &__link{
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    &:hover{
+      color: white;
+      text-decoration: none;
+    }
+  }
+  &__showMore{
+    @include transition();
+    @include sizes(100px, 100px);
+    border-radius: 50%;
+    color: white;
+    background: $header-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      color: white;
+      text-decoration: none;
+      opacity: 0.7;
+    }
+  }
+  &__write{
+    @include transition();
+    padding: 2px 8px;
+    border: 1px solid $shadow-color;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    margin-left: 20px;
+    &:hover{
+      color:white;
+      text-decoration: none;
+      border-color: white;
+    }
+  }
+  &__reviews{
+    padding-bottom: 30px;
+  }
+  &__sliderBg{
+    background: $bg-slider-color;
+    padding: 30px 0;
+    margin: 30px 0;
   }
 }

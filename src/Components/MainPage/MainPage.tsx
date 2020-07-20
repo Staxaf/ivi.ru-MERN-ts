@@ -30,14 +30,14 @@ const MainPage: React.FC<PropsType> = ({persons, films, cartoons, serials,
 
     }, [])
     return <div className={css.main}>
-        <Slider title={'Persons'} slidesCount={7}
-                items={persons && persons.map((person, i) => <Person key={i} {...person} />)} link={'/persons'}/>
         <Slider title={'Films'} slidesCount={7}
                 items={films && films.map((film, i) => <FilmCard key={i} {...film} />)} link={'/films'}/>
         <Slider title={'Cartoons'} slidesCount={7}
                 items={cartoons && cartoons.map((cartoon, i) => <FilmCard key={i} {...cartoon} />)} link={'/cartoons'}/>
         <Slider title={'Serials'} slidesCount={7}
                 items={serials && serials.map((serial, i) => <FilmCard key={i} {...serial} />)} link={'/serials'}/>
+        <Slider title={'Persons'} slidesCount={7}
+                items={persons && persons.map((person, i) => <Person key={i} {...person} />)} link={'/persons'}/>
     </div>
 }
 

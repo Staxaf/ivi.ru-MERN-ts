@@ -7,7 +7,7 @@ router.route('/').get((req, res) => {
         .then(async persons => {
             let newPersons = []
             for (const person of persons) {
-                const films = await Multimedia.find({$or: [{actors: person._id}, {directors: person._id}]})
+                const films = await getPersonFilms(person)
                 newPersons = [...newPersons, { ...person._doc, films}]
             }
             await res.json({persons: newPersons})
@@ -24,5 +24,18 @@ router.route('/add').post((req, res) => {
         .then(() => res.json('Person is successfully added!'))
         .catch(err => res.status(400).json('Error: ' + err))
 })
+
+router.route('/get/:id').get((req, res) => {
+    Person.findById(req.params.id)
+        .then(async person => {
+            const films = await getPersonFilms(person)
+           await res.json({person, films})
+        })
+        .catch(err => res.status(400).json('Error: ' + err))
+})
+
+const getPersonFilms = (person) => {
+    return Multimedia.find({$or: [{actors: person._id}, {directors: person._id}]})
+}
 
 module.exports = router

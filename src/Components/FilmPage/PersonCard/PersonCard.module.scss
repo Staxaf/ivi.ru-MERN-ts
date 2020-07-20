@@ -1,0 +1,31 @@
+@import '../../../App.scss';
+
+.personCard{
+  margin: 0 10px;
+  &:hover{
+    text-decoration: none;
+    .personCard__imgWrapper{
+      img{
+        filter: brightness(80%);
+      }
+    }
+  }
+  &__imgWrapper{
+
+    img{
+      @include transition();
+      @include sizes(100px, 100px);
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  &__name{
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+  &__profession{
+    color: $link-color;
+    font-size: 13px;
+  }
+}

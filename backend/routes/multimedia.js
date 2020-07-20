@@ -58,9 +58,27 @@ router.route('/get/:id').get((req, res) => {
         .populate('genres')
         .populate('actors')
         .populate('directors')
-        .then(multimedia => {
-            if(!multimedia) res.json({msg: 'Multimedia is not found.'})
-            res.json({multimedia})
+        .then(async multimedia => {
+            let similarFilms = []
+            // find similar films for found multimedia
+            for (const genre of multimedia.genres) {
+                const newFilms = await Multimedia
+                    .find({$and: [{genres: genre._id}, {type: multimedia.type}, {_id: {$ne: multimedia._id}}]})
+                    .populate('genres')
+
+                // delete same films
+                if(similarFilms.length !== 0) {
+                    similarFilms.forEach((similarFilm, i) => [
+                        newFilms.forEach((newFilm) => {
+                            if(similarFilm._id === newFilm._id) similarFilms = [...similarFilms, newFilm]
+                        })
+                    ])
+                } else {
+                    similarFilms = [...similarFilms, ...newFilms]
+                }
+            }
+            if (!multimedia) await res.json({msg: 'Multimedia is not found.'})
+            await res.json({multimedia, similarFilms})
         })
         .catch(err => res.status(400).json('Error: ' + err))
 })

@@ -1,5 +1,8 @@
 import axios from 'axios'
 import {API_URL, FilmType, PersonsType, SET_CARTOONS, SET_FILMS, SET_PERSONS, SET_SERIALS} from "./types";
+import {Dispatch} from "redux";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "./redux-store";
 
 type initialStateType = {
     persons: Array<PersonsType> | null
@@ -15,7 +18,7 @@ const initialState: initialStateType = {
     serials: null
 }
 
-export const mainReducer = (state = initialState, action: ActionsTypes): initialStateType => {
+export const mainReducer = (state = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
         case SET_PERSONS:
             return {...state, persons: action.payload.persons}
@@ -29,7 +32,7 @@ export const mainReducer = (state = initialState, action: ActionsTypes): initial
             return state
     }
 }
-type ActionsTypes = SetPersonsActionType | SetNewFilmsActionType | SetCartoonsActionType | SetSerialsActionType
+type ActionsType = SetPersonsActionType | SetNewFilmsActionType | SetCartoonsActionType | SetSerialsActionType
 type SetPersonsActionType = {
     type: typeof SET_PERSONS
     payload: {
@@ -73,31 +76,38 @@ export const setSerials = (serials: Array<FilmType>): SetSerialsActionType => ({
 })
 
 // Redux thunks
-export const getPersons = () => async (dispatch: any) => {
-    axios.get(`${API_URL}/persons`)
-        .then(response => {
-            dispatch(setPersons(response.data.persons))
-        })
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
+type PersonsResponseType = {
+    persons: Array<PersonsType>
+}
+export const getPersons = (): ThunkType => async (dispatch) => {
+    const response = await axios.get<PersonsResponseType>(`${API_URL}/persons`)
+    dispatch(setPersons(response.data.persons))
 
 }
 
-export const getFilms = () => async (dispatch: any) => {
-    axios.get(`${API_URL}/multimedia/films`)
-        .then(response => {
-            dispatch(setFilms(response.data.films))
-        })
+type FilmsResponseType = {
+    films: Array<FilmType>
 }
 
-export const getCartoons = () => async (dispatch: any) => {
-    axios.get(`${API_URL}/multimedia/cartoons`)
-        .then(response => {
-            dispatch(setCartoons(response.data.cartoons))
-        })
+export const getFilms = (): ThunkType => async (dispatch) => {
+    const response = await axios.get<FilmsResponseType>(`${API_URL}/multimedia/films`)
+    dispatch(setFilms(response.data.films))
+}
+type CartoonsResponseType = {
+    cartoons: Array<FilmType>
 }
 
-export const getSerials = () => async (dispatch: any) => {
-    axios.get(`${API_URL}/multimedia/serials`)
-        .then(response => {
-            dispatch(setSerials(response.data.serials))
-        })
+export const getCartoons = (): ThunkType => async (dispatch) => {
+    const response = await axios.get<CartoonsResponseType>(`${API_URL}/multimedia/cartoons`)
+    dispatch(setCartoons(response.data.cartoons))
+}
+type SerialsResponseType = {
+    serials: Array<FilmType>
+}
+
+export const getSerials = (): ThunkType => async (dispatch) => {
+    const response = await axios.get<SerialsResponseType>(`${API_URL}/multimedia/serials`)
+    dispatch(setSerials(response.data.serials))
+
 }

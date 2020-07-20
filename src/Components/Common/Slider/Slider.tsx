@@ -7,14 +7,15 @@ type PropsType = {
     slidesCount: number
     items: Array<React.ReactNode> | null
     title: string
-    link: string
+    link?: string
+    textColor?: string
 }
 
-const Slider: React.FC<PropsType> = ({slidesCount, items, title, link}) => {
+const Slider: React.FC<PropsType> = ({slidesCount, items, title, link,textColor}) => {
     const [currentLastSlide, setCurrentLastSlide] = useState<number>(slidesCount)
     return <div className={`${css.slider} text-white`}>
         <div className={`${css.slider__title}`}>
-            <h2 className={`text-white`}>{title}</h2>
+            <h2 style={{'color': textColor ? textColor : 'white', 'fontWeight': '400'}}>{title}</h2>
             {items && <div className={css.slider__buttons}>
                 <button disabled={currentLastSlide === slidesCount}
                         onClick={() => setCurrentLastSlide(currentLastSlide - slidesCount + 1)}
@@ -38,7 +39,7 @@ const Slider: React.FC<PropsType> = ({slidesCount, items, title, link}) => {
             }px)`
         }}>
             {items}
-            {currentLastSlide > items.length && <ShowMore link={link}/>}
+            {currentLastSlide > items.length && link && <ShowMore link={link}/>}
         </div> : <Loader/>}
     </div>
 }

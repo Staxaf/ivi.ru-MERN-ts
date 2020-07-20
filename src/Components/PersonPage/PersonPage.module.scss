@@ -1,0 +1,26 @@
+@import "../../App.scss";
+
+.personPage_bg{
+  background: $bg-person-color;
+  min-height: calc(100vh - #{$header-height});
+  padding-top: 30px;
+}
+.personPage {
+  &__title{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+  }
+  &__imgWrapper{
+    img{
+      width: 130px
+    }
+  }
+  &__name{
+    color: $main-color;
+    font-weight: 400;
+    font-size: 36px;
+  }
+  &__details {
+    color: $text-color;
+  }
+}

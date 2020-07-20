@@ -41,10 +41,8 @@
     opacity: 0;
   }
 
-  &__line {
-    background: $main-color;
-    height: 100%;
-    border-radius: 10px;
+  &__description{
+    font-weight: 600;
   }
   &__rating{
 

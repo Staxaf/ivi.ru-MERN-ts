@@ -2,10 +2,12 @@ import {applyMiddleware, combineReducers, createStore} from "redux"
 import {mainReducer} from "./main-reducer";
 import thunk from "redux-thunk";
 import {multimediaReducer} from "./multimedia-reducer";
+import {personReducer} from "./person-reducer";
 
 const rootReducer = combineReducers({
     mainReducer,
-    multimediaReducer
+    multimediaReducer,
+    personReducer
 })
 
 type RootReducerType = typeof rootReducer

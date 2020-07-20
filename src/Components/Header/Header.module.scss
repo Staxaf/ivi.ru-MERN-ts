@@ -5,13 +5,14 @@ header {
   position: fixed;
   width: 100vw;
   z-index: 1;
+  box-shadow: 0 4px 12px rgba(17,13,43,.2);
 }
 
 
 .header {
   display: flex;
   align-items: center;
-  height: 60px;
+  height: $header-height;
 
   &__decoration {
     position: absolute;
