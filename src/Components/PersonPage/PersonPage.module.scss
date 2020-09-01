@@ -2,7 +2,7 @@
 
 .personPage_bg{
   background: $bg-person-color;
-  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100vh - 300px);
   padding-top: 30px;
 }
 .personPage {

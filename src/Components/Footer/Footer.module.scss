@@ -1,0 +1,34 @@
+@import '../../App.scss';
+
+.footer {
+  height: $footer-height;
+  .footer__container {
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__navs {
+    padding-top: 32px;
+    background: $header-color;
+    .footer__nav {
+      .footer__nav_title {
+        font-size: 14px;
+        color: white;
+        font-weight: 500;
+        margin-left: -20px;
+      }
+      .footer__nav_list {
+        padding: 0;
+        .footer__nav_item {
+          color: #ffffff99;
+          a {
+            color: #ffffff99;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

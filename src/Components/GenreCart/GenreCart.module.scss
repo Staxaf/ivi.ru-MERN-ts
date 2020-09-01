@@ -1,0 +1,31 @@
+@import "../../App.scss";
+
+.genreCart {
+  @include transition();
+  cursor: pointer;
+  background: $header-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  &:hover {
+    text-decoration: none;
+  }
+  &__iconWrapper {
+    @include  sizes(150px, 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: $main-color;
+      font-size: 30px;
+    }
+  }
+  p {
+    color: white;
+  }
+  &:hover {
+    background: #2c225c;
+  }
+}

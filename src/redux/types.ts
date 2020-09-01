@@ -7,10 +7,17 @@ export const SET_PERSONS = 'SET_PERSONS'
 export const SET_FILMS = 'SET_FILMS'
 export const SET_CARTOONS = 'SET_CARTOONS'
 export const SET_SERIALS = 'SET_SERIALS'
+export const SET_GENRES = 'SET_GENRES'
 
 //multimedia-reducer action types
 export const SET_MULTIMEDIA = 'SET_MULTIMEDIA'
 export const SET_SIMILAR_FILMS = 'SET_SIMILAR_FILMS'
+export const SET_NEW_FILMS = 'SET_NEW_FILMS'
+export const SET_BEST_FILMS = 'SET_BEST_FILMS'
+export const SET_NEW_SERIALS = 'SET_NEW_SERIALS'
+export const SET_BEST_SERIALS = 'SET_BEST_SERIALS'
+export const SET_NEW_CARTOONS = 'SET_NEW_CARTOONS'
+export const SET_BEST_CARTOONS = 'SET_BEST_CARTOONS'
 
 //person-reducer action types
 export const SET_PERSON = 'SET_PERSON'
@@ -56,4 +63,5 @@ export type ReviewType = {
 export type GenreType = {
     _id: string,
     title: string
+    classIcon: string
 }

@@ -12,14 +12,15 @@ import {getPersons} from "./redux/main-reducer";
 import {AppStateType} from "./redux/redux-store";
 import FilmPage from "./Components/FilmPage/FilmPage";
 import PersonPage from "./Components/PersonPage/PersonPage";
+import Footer from "./Components/Footer/Footer";
 
 type PropsType = {}
 
 const App: React.FC<PropsType> = () => {
     return (
-        <div>
+        <div  className={'main-bg'}>
             <Header/>
-            <div className={'main-bg'}>
+            <div className={'main-content'}>
                 <div className='container'>
                     <Route exact path={'/'} render={() => <MainPage/>}/>
                     <Route exact path={'/films'} render={() => <MoviesPage/>}/>
@@ -29,6 +30,7 @@ const App: React.FC<PropsType> = () => {
                 <Route path={'/watch/:type/:id'} render={() => <FilmPage />} />
                 <Route path={'/persons/:id'} render={() => <PersonPage/>} />
             </div>
+            <Footer />
         </div>
     );
 }

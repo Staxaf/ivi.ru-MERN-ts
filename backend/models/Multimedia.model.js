@@ -21,7 +21,7 @@ const multimediaSchema = new Schema({
     },
     genres: [{
         type: Schema.Types.ObjectId,
-        ref: 'Genre'
+        ref: 'GenreCart'
     }],
     duration: {
         type: Number,

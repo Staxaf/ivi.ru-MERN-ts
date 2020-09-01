@@ -9,6 +9,7 @@ interface PropsType extends FilmType  {
 
 const FilmCard: React.FC<PropsType> = ({title, releaseYear, producerCountry, poster, ratingIMDB,
                                           ageRating, type, _id, genres,duration,textColor}) => {
+
     return <NavLink to={`/watch/${type.toLowerCase()}s/${_id}`} className={css.filmCard}>
         <div className={css.filmCard__imgWrapper}>
             <img src={poster} alt=""/>
@@ -25,7 +26,7 @@ const FilmCard: React.FC<PropsType> = ({title, releaseYear, producerCountry, pos
                     'width': `${ratingIMDB * 10}%`,
 
                 }} /></div>
-                <p>{releaseYear}, {producerCountry} <br></br> {genres[0].title}<br></br>{duration} {type === 'Serial' ? 'seasons' : 'minutes'}</p>
+                <p>{releaseYear}, {producerCountry} <br></br> {genres[0].title && genres[0].title}<br></br>{duration} {type === 'Serial' ? 'seasons' : 'minutes'}</p>
 
             </div>
         </div>

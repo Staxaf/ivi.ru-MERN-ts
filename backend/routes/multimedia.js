@@ -29,7 +29,9 @@ router.route('/films').get((req, res) => [
         .populate('genres')
         .populate('actors')
         .populate('directors')
-        .then(films => res.json({films}))
+        .then(films => {
+            res.json({films})
+        })
         .catch(err => res.status(400).json('Error: ' + err))
 ])
 
@@ -82,6 +84,71 @@ router.route('/get/:id').get((req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err))
 })
+
+const getNewMultimedia = (type) => {
+    return Multimedia.find({type, releaseYear: {$gt: 2013}}).sort({releaseYear: -1})// films are greater then 2013
+        .populate('genres')
+}
+const getBestMultimedia = (type) => {
+    return Multimedia.find({type}).sort({ratingIMDB: -1})
+        .populate('genres')
+}
+
+router.route('/films/new').get(async (req, res) => {
+    try {
+        const newFilms = await getNewMultimedia('Film')
+        res.json({newFilms})
+    } catch (err){
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+router.route('/films/best').get(async(req, res) => {
+    try {
+        const bestFilms = await getBestMultimedia('Film')
+        res.json({bestFilms})
+    } catch (err) {
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+router.route('/serials/new').get(async (req, res) => {
+    try {
+        const newSerials = await getNewMultimedia('Serial')
+        res.json({newSerials})
+    } catch (err){
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+router.route('/serials/best').get(async(req, res) => {
+    try {
+        const bestSerials = await getBestMultimedia('Serial')
+        res.json({bestSerials})
+    } catch (err) {
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+router.route('/cartoons/new').get(async (req, res) => {
+    try {
+        const newCartoons = await getNewMultimedia('Cartoon')
+        res.json({newCartoons})
+    } catch (err){
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+router.route('/cartoons/best').get(async(req, res) => {
+    try {
+        const bestCartoons = await getBestMultimedia('Cartoon')
+        res.json({bestCartoons})
+    } catch (err) {
+        res.status(400).json('Error: ' + err)
+    }
+})
+
+
 
 
 module.exports = router

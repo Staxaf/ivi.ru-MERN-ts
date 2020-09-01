@@ -1,6 +1,15 @@
 import axios from 'axios'
-import {API_URL, FilmType, PersonsType, SET_CARTOONS, SET_FILMS, SET_PERSONS, SET_SERIALS} from "./types";
-import {Dispatch} from "redux";
+import {
+    API_URL,
+    FilmType,
+    GenreType,
+    PersonsType,
+    SET_CARTOONS,
+    SET_FILMS,
+    SET_GENRES,
+    SET_PERSONS,
+    SET_SERIALS
+} from "./types";
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "./redux-store";
 
@@ -8,14 +17,16 @@ type initialStateType = {
     persons: Array<PersonsType> | null
     films: Array<FilmType> | null
     cartoons: Array<FilmType> | null
-    serials: Array<FilmType> | null
+    serials: Array<FilmType> | null,
+    genres: Array<GenreType> | null
 }
 
 const initialState: initialStateType = {
     persons: null,
     films: null,
     cartoons: null,
-    serials: null
+    serials: null,
+    genres: null
 }
 
 export const mainReducer = (state = initialState, action: ActionsType): initialStateType => {
@@ -28,11 +39,13 @@ export const mainReducer = (state = initialState, action: ActionsType): initialS
             return {...state, cartoons: action.payload.cartoons}
         case SET_SERIALS:
             return {...state, serials: action.payload.serials}
+        case SET_GENRES:
+            return {...state, genres: action.payload.genres}
         default:
             return state
     }
 }
-type ActionsType = SetPersonsActionType | SetNewFilmsActionType | SetCartoonsActionType | SetSerialsActionType
+type ActionsType = SetPersonsActionType | SetNewFilmsActionType | SetCartoonsActionType | SetSerialsActionType | SetGenresActionType
 type SetPersonsActionType = {
     type: typeof SET_PERSONS
     payload: {
@@ -75,6 +88,16 @@ export const setSerials = (serials: Array<FilmType>): SetSerialsActionType => ({
     payload: {serials}
 })
 
+type SetGenresActionType = {
+    type: typeof SET_GENRES
+    payload: {genres: Array<GenreType>}
+}
+
+export const setGenres = (genres: Array<GenreType>): SetGenresActionType => ({
+    type: SET_GENRES,
+    payload: {genres}
+})
+
 // Redux thunks
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 type PersonsResponseType = {
@@ -109,5 +132,13 @@ type SerialsResponseType = {
 export const getSerials = (): ThunkType => async (dispatch) => {
     const response = await axios.get<SerialsResponseType>(`${API_URL}/multimedia/serials`)
     dispatch(setSerials(response.data.serials))
+}
 
+type GenresResponseType = {
+    genres: Array<GenreType>
+}
+
+export const getGenres = ():ThunkType => async (dispatch) => {
+    const response = await axios.get<GenresResponseType>(`${API_URL}/genres`)
+    dispatch(setGenres(response.data.genres))
 }
